@@ -1,0 +1,3 @@
+class Pineapple extends Fruit{
+    
+}

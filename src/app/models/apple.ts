@@ -1,0 +1,3 @@
+class Apples extends Fruit{
+    
+}
