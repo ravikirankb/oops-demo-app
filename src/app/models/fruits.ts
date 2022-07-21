@@ -1,6 +1,6 @@
 import { Observable } from "rxjs";
 
-class Fruits{
+export class Fruits{
      constructor(){
         this.fruits = new Array<Fruit>();
      }

@@ -1,4 +1,4 @@
-class Basket{
+export class Basket{
     constructor(){
 
     }

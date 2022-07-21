@@ -1,0 +1,4 @@
+interface iOffers{
+    hasOffers:boolean;
+    appliedDiscounts:()=>Number;   
+}
