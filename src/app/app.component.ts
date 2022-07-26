@@ -11,6 +11,4 @@ export class AppComponent {
   title = 'oops-demo-app';
 
   mango = new Mango();
-
-  Fruit f = new Mango();
 }

@@ -1,0 +1,59 @@
+{
+    "org": {
+        "seasonaloffers": {
+            "discount_mode": "percent",
+            "discount": 10
+        },
+        "couponoffer":{
+            "code":"org_buy_new",
+            "discount_mode":"price",
+            "discount":10
+        },
+        "regular":{
+            "discount_mode":"percent",
+            "discount":2
+        }
+    },
+    "ban": {
+        "regular":{
+            "discount_mode":"price",
+            "discount":5
+        }
+    },
+    "pineap": {
+        "seasonaloffers":{
+            "discount_mode":"percent",
+            "discount":5
+        },
+        "regular":{
+            "discount_mode":"price",
+            "discount":3
+        }
+    },
+    "man": {
+        "seasonaloffers": {
+            "discount_mode": "percent",
+            "discount": 5
+        },
+        "couponoffer":{
+            "code":"org_buy_new",
+            "discount_mode":"price",
+            "discount":5
+        },
+        "regular":{
+            "discount_mode":"percent",
+            "discount":5
+        }
+    },
+    "app": {
+        "couponoffer":{
+            "code":"org_buy_new",
+            "discount_mode":"percent",
+            "discount":4
+        },
+        "regular":{
+            "discount_mode":"price",
+            "discount":5
+        }
+    }
+}
