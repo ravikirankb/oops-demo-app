@@ -5,7 +5,7 @@ export class Mango extends Fruit {
         super("Mango", 1, "Mango");
     }
 
-    showProperties(){
+    showProperties(): void{
      console.log("show properties");
     }
 }

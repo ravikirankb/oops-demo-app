@@ -1,0 +1,11 @@
+.furit-bar{
+    height:100px;
+    width:100px;
+    border-radius: 2px;
+    margin: 25px 25%;
+}
+
+.furit-bar img{
+    height: 100%;
+    width: 100%;
+}

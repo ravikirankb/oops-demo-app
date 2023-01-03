@@ -1,0 +1,13 @@
+<b>Choose your fruit!</b>
+
+<!-- <ul *ngFor = 'let fruit of fruitData'>
+    <li>
+        <img src="{{fruit.imageUrl}}">
+    </li>
+</ul> -->
+
+<ng-container *ngFor = 'let fruit of fruitData'>
+    <div class="furit-bar" onclick="alert('clicked');">
+        <img src="{{fruit.imageUrl}}">
+    </div>
+</ng-container>

@@ -1,0 +1,29 @@
+.add-fruit-bar{
+  width:30%;
+  height: 25%;
+  margin-left: 35%;
+  margin-top: 50%;
+}
+
+.add-fruit-bar img{
+    height: 100%;
+    width:100%;
+}
+
+.line{
+    height:90%;
+    border-left: 6px solid black;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.shopping-cart{
+    height:100%;
+    width: 100%;
+    border-color: black;
+    border-radius: 1px solid black;
+}
+
+.basket-container{
+    height: auto;
+}

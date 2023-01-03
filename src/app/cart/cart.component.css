@@ -1,0 +1,10 @@
+.cart-bar{
+    height:50%;
+    width:50%;
+    margin-top: 40%;
+}
+
+.cart-bar img{
+    height:100%;
+    width:100%;
+}

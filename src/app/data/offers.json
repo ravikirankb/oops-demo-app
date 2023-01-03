@@ -1,5 +1,5 @@
 {
-    "org": {
+    "orng": {
         "seasonaloffers": {
             "discount_mode": "percent",
             "discount": 10
@@ -30,7 +30,7 @@
             "discount":3
         }
     },
-    "man": {
+    "mang": {
         "seasonaloffers": {
             "discount_mode": "percent",
             "discount": 5
@@ -45,7 +45,7 @@
             "discount":5
         }
     },
-    "app": {
+    "apl": {
         "couponoffer":{
             "code":"org_buy_new",
             "discount_mode":"percent",

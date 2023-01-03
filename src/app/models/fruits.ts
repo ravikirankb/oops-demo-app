@@ -1,4 +1,5 @@
 import { Observable } from "rxjs";
+import { Fruit } from "./fruit";
 
 export class Fruits{
      constructor(){
