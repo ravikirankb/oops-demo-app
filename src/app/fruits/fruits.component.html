@@ -5,9 +5,12 @@
         <img src="{{fruit.imageUrl}}">
     </li>
 </ul> -->
-
+<div>
 <ng-container *ngFor = 'let fruit of fruitData'>
-    <div class="furit-bar" onclick="alert('clicked');">
-        <img src="{{fruit.imageUrl}}">
+    <div class="furit-bar" [class.dim]="code!=fruit.code" [class.sendToBasket]="sendToBasket && code==fruit.code"
+     [attr.data-code]="fruit.code" (click)="fruitSelect($event);"
+    > 
+        <img [attr.data-code]="fruit.code" src="{{fruit.imageUrl}}">
     </div>
 </ng-container>
+</div>

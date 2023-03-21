@@ -9,3 +9,37 @@
     height: 100%;
     width: 100%;
 }
+
+.dim{
+  opacity: 0.2;
+}
+
+.sendToBasket{
+  display:block;
+  animation: xAxis 1s forwards cubic-bezier(1.000,0.440,0.840,0.165);
+}
+
+.sendToBasket::before{
+  animation: yAxis 1s alternate forwards cubic-bezier(0.165, 0.840, 0.440, 1.000);   
+}
+
+@keyframes yAxis {
+  100% {
+    transform: translateY(calc(-50vh + 175px));
+  }
+}
+
+@keyframes xAxis {
+  100% {
+    transform: translateX(calc(355px - 50vw));
+  }
+}
+
+
+:root {
+  --basket-offset-x: 0;
+  --bakset-offset-y: 0;
+
+  --fruit-offset-x:0;
+  --fruit-offset-y:0;
+}

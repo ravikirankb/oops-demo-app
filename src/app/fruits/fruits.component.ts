@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { isEmpty } from 'rxjs';
 import { FruitData } from '../models/fruit-data';
 
 @Component({
@@ -11,6 +12,9 @@ export class FruitsComponent implements OnInit {
   constructor() { }
 
   fruitData: FruitData[] = [];
+  opacity:Number=1;
+  code:String="";
+  sendToBasket:Boolean=false;
 
   ngOnInit(): void {
     this.fruitData=([
@@ -22,4 +26,27 @@ export class FruitsComponent implements OnInit {
     ]); 
   }
 
+  fruitSelect(event:any){
+    console.log(event);
+    console.log(event.target.dataset);
+    var code = event.target.dataset.code;
+    if(this.code !== ""){
+        if(this.code === code){
+          // second click case: place the fruit in the basket.
+          this.sendToBasket = true;
+          var that = this;
+          setTimeout(function(){
+             that.sendToBasket = false;
+          },1200);
+        } 
+        else{
+          this.sendToBasket = false;
+        }
+    }
+    this.code = code;
+    const b:any = document.querySelector(".add-fruit-bar");
+    const r:any =b.getBoundingClientRect();
+    b.left;
+    console.log(r.right);
+  }
 }

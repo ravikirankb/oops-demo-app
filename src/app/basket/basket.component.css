@@ -27,3 +27,15 @@
 .basket-container{
     height: auto;
 }
+
+.cart-actions{
+    height:50px;
+    width:100%;
+    margin-left: 40%;
+    margin-top: 5%;
+}
+
+.cart-actions img{
+    height: 100%;
+    margin-right: 5px;
+}
