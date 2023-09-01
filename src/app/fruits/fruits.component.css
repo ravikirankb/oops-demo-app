@@ -3,6 +3,12 @@
     width:100px;
     border-radius: 2px;
     margin: 25px 25%;
+    position: relative;
+    transition: top 2s ease, left 2s ease; /* Animation properties */
+}
+
+.furit-bar img{
+  position: relative;
 }
 
 .furit-bar img{
@@ -14,6 +20,8 @@
   opacity: 0.2;
 }
 
+
+/* 
 .sendToBasket{
   display:block;
   animation: xAxis 1s forwards cubic-bezier(1.000,0.440,0.840,0.165);
@@ -33,13 +41,28 @@
   100% {
     transform: translateX(calc(355px - 50vw));
   }
-}
+  100% {
+    transform: translateY(calc(-50vh + 175px));
+  }
+} */
 
 
 :root {
   --basket-offset-x: 0;
   --bakset-offset-y: 0;
 
-  --fruit-offset-x:0;
-  --fruit-offset-y:0;
+  --fruit-offset-x:25;
+  --fruit-offset-y:350;
+}
+
+@keyframes move-box {
+  from {
+    transform: translate(0,0);
+  } to {
+    transform: translate(var(--basket-offset-x),var(--basket-offset-y));
+  }
+}
+
+.sendToBasket {
+  animation: move-box 2s forwards;
 }

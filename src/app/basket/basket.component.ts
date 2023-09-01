@@ -7,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BasketComponent implements OnInit {
 
+  fruit_class:string="";
   constructor() { }
 
   ngOnInit(): void {
+    this.fruit_class ="";
   }
-
 }
