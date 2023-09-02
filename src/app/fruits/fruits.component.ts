@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { isEmpty } from 'rxjs';
 import { FruitData } from '../models/fruit-data';
+import { SharedDateServiceService } from "../services/shared-date-service.service";
 
 @Component({
   selector: 'app-fruits',
@@ -19,7 +20,7 @@ export class FruitsComponent implements OnInit, AfterViewInit{
     this.basket_Y = elementPosition.y;
   }
 
-  constructor() { }
+  constructor(private sharedDataService: SharedDateServiceService) { }
 
   fruitData: FruitData[] = [];
   opacity: Number = 1;
@@ -74,6 +75,7 @@ export class FruitsComponent implements OnInit, AfterViewInit{
         this.sendToBasket = true;
         var that = this;
         setTimeout(function () {
+          that.sharedDataService.onFruitSelection.emit(code);
           that.sendToBasket = false;
         }, 1200);
       }
