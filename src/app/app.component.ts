@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Mango } from './models/mango';
 import { Fruit } from './models/fruit';
 import { FruitData } from './models/fruit-data';
 
@@ -11,8 +10,6 @@ import { FruitData } from './models/fruit-data';
 })
 export class AppComponent {
   title = 'oops-demo-app';
-
-  mango = new Mango();
 
   ngngOnInit() {
      

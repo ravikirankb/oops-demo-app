@@ -1,0 +1,22 @@
+{
+    "orng": {
+        "weight":[30,60],
+        "maxavailable":250000
+    },
+    "ban": {
+        "weight":[20,50],
+        "maxavailable":100000
+    },
+    "pineap": {
+        "weight":[100,300],
+        "maxavailable":300000
+    },
+    "mang": {
+        "weight":[50,100],
+        "maxavailable":200000
+    },
+    "apl": {
+        "weight":[30,70],
+        "maxavailable":250000
+    }
+}

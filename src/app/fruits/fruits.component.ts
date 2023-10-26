@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { isEmpty } from 'rxjs';
 import { FruitData } from '../models/fruit-data';
-import { SharedDateServiceService } from "../services/shared-date-service.service";
+import { SharedDataService } from "../services/shared-date-service.service";
 
 @Component({
   selector: 'app-fruits',
@@ -20,7 +20,7 @@ export class FruitsComponent implements OnInit, AfterViewInit{
     this.basket_Y = elementPosition.y;
   }
 
-  constructor(private sharedDataService: SharedDateServiceService) { }
+  constructor(private sharedDataService: SharedDataService) { }
 
   fruitData: FruitData[] = [];
   opacity: Number = 1;

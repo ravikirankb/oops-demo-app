@@ -40,6 +40,9 @@
     margin-right: 5px;
 }
 
+:root{
+    --fruit-count:"";
+}
 
 .appl, .ban, .mang, .pineap, .orng{
     /* margin-left: 15%; */
@@ -52,7 +55,7 @@
 }
 
 .appl::before, .ban::before, .mang::before, .pineap::before, .orng::before{
-    content:"5";
+    content:var(--fruit-count);
     font-size:18px;
     font-weight:600;
     position:relative;
