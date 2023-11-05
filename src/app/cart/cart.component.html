@@ -1,5 +1,18 @@
 <b>Here's your cart!</b>
 
 <div class="cart-bar">
+    <div [class]="loaded">
+
+    </div>
     <img src="assets/static/Images/grocery-trolley-svgrepo-com.svg"/>
+
+    <input class = "pay" type="button" value="Pay and Check Out"/>
+    <input class="cancel" type="button" value="Cancel Order"/>
+</div>
+
+<div class="summary">
+    <ul>
+        <li>Items in Cart</li>
+        <li>Apple - 0.1234 kg</li>
+    </ul>
 </div>

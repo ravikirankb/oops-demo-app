@@ -1,22 +1,27 @@
 {
     "orng": {
-        "weight":[30,60],
-        "maxavailable":250000
+        "weight":[110,160],
+        "maxavailable":250000,
+        "price":80
     },
     "ban": {
-        "weight":[20,50],
-        "maxavailable":100000
+        "weight":[70,90],
+        "maxavailable":100000,
+        "price":55
     },
     "pineap": {
-        "weight":[100,300],
-        "maxavailable":300000
+        "weight":[300,600],
+        "maxavailable":300000,
+        "price":120
     },
     "mang": {
-        "weight":[50,100],
-        "maxavailable":200000
+        "weight":[100,200],
+        "maxavailable":200000,
+        "price": 135
     },
-    "apl": {
-        "weight":[30,70],
-        "maxavailable":250000
+    "appl": {
+        "weight":[90,130],
+        "maxavailable":250000,
+        "price":220
     }
 }

@@ -8,3 +8,46 @@
     height:100%;
     width:100%;
 }
+
+.loaded{
+   margin-top: -4%;
+   margin-left: 6.5%;
+   background-repeat: no-repeat;
+   height: 100px;
+   width: 100px;
+   position: absolute;
+   background-image: url("/assets/static/Images/shopping-bag-svgrepo-com.svg");
+}
+
+input[type=button]{
+    background-color: red;
+    border-radius: 3px;
+    border:white;
+    height: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+.pay{
+    margin-left: 10px;
+}
+
+.cancel{
+    margin-left: 5px;
+}
+
+
+.summary{
+    margin-top: -50%;
+    margin-right: 5%;
+    float: right;
+}
+
+li {
+    display: list-item;
+    background: brown;
+    color: white;
+    border-radius: 2px;
+    margin:2px 2px 2px 2px;
+    padding:3px 3px 3px 3px;
+}

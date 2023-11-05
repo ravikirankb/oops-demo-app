@@ -1,19 +1,20 @@
 
-<div class="shopping-cart">
-<div>
-  
+<div class="shopping-cart"> 
+<div> 
   <div class="line"></div>
   <div class="line"></div>
 
    <div class="add-fruit-bar">
-      <div [class]="fruit_class">
+      <span class="weight">{{weight}}</span>
+      
+      <div [class]="fruit_class" [class.sendToCart]="sendToCart">
 
       </div>
       <img id ="img-weighing" src="assets/static/Images/grocery-weighing-scale-svgrepo-com.svg"/>
    </div>
 
    <div class="cart-actions">
-      <img title="Add to Cart" src="assets/static/Images/add-signs-svgrepo-com.svg" onclick="alert('add');"/>
+      <img title="Add to Cart" src="assets/static/Images/add-signs-svgrepo-com.svg" (click)="addToCart($event);"/>
       <img title="Remove from Basket" src="assets/static/Images/remove-bin-delete-trash-svgrepo-com.svg" (click)="removeFruit($event);"/>
    </div>
 </div>

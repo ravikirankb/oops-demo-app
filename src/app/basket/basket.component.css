@@ -118,3 +118,34 @@
     left:69px;
     background:#d1762b;
 }
+
+.weight{
+    line-height: 0.9;
+    margin-top: 8.5%;
+    margin-left: 2.25%;
+    color: black;
+    position: absolute;
+    background: white;
+    border-radius: 1px;
+    width: 75px;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+:root {
+    --cart-offset-x: 0;
+    --cart-offset-y: 0px;
+  }
+  
+  @keyframes move-to-cart {
+    from {
+      transform: translate(0,0);
+    } to {
+      transform: translate(var(--cart-offset-x),var(--cart-offset-y));
+    }
+  }
+  
+  .sendToCart {
+    animation: move-to-cart 2s forwards;
+  }

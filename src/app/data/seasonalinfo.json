@@ -1,14 +1,14 @@
 {
-    "JAN":["orange","apple"],
+    "JAN":["orng","appl"],
     "FEB":[""],
-    "MARCH":["orange","apple"],
-    "APRIL":["pineapple"],
-    "MAY":["pineapple"],
+    "MAR":["orng","appl"],
+    "APR":["pineap"],
+    "MAY":["pineap"],
     "JUN":[""],
-    "JULY":["mango"],
-    "AUG":["apple","mango"],
-    "SEP":["apple"],
-    "OCT":["apple","pineapple","banana"],
-    "NOV":["orange"],
-    "DEC":["orange"]
+    "JUL":["mang"],
+    "AUG":["appl","mang"],
+    "SEP":["appl"],
+    "OCT":["appl","pineap","ban"],
+    "NOV":["orng"],
+    "DEC":["orng"]
 }

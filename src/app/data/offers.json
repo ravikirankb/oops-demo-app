@@ -45,7 +45,7 @@
             "discount":5
         }
     },
-    "apl": {
+    "appl": {
         "couponoffer":{
             "code":"org_buy_new",
             "discount_mode":"percent",

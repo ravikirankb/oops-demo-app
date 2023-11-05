@@ -1,61 +1,181 @@
-import { Observable } from "rxjs";
+import { Observable, retry } from "rxjs";
 import { Fruit } from "./fruit";
+import fruitsData from "../data/fruit_info.json"
+import seasonalInfo from "../data/seasonalinfo.json"
+import offers from "../data/offers.json"
+import { KeyValue } from "@angular/common";
 
 export class Fruits {
-   fruit?: any = new Object();
+   fruitCode: string = "";
+   months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 
-   constructor() {
+   constructor(fruit: string) {
+      this.fruitCode = fruit;
       this.fruits = new Array<Fruit>();
    }
 
    fruits: Fruit[];
 
    addFruit(fruit: Fruit): void {
-      this.fruits.push(fruit);
+      let weight: number = this.calculateWeight();
+      let maxavailableWeight = fruit.getFruitMaxAvailableWeight();
+      if (weight < maxavailableWeight) {
+         this.fruits.push(fruit);
+      }
+      else {
+         alert("Fruit stock is exhausted!");
+      }
    }
 
    removeFruit(): void {
       this.fruits.pop();
    }
 
-   clear():void{
-      this.fruits.splice(0,this.fruits.length);
+   clear(): void {
+      this.fruits.splice(0, this.fruits.length);
+      this.fruitCode = "";
    }
 
    calculateWeight(): number {
-      let weight:number =0;
-      this.fruits.forEach(f =>{
-          weight += f.weight;
+      let weight: number = 0;
+      this.fruits.forEach(f => {
+         weight += f.weight;
       });
 
       return weight;
    }
 
    getPrice(): number {
-      return 0;
+      let isSeasonal: boolean = this.isSeasonal();
+      let price:number = this.readFruitInfo()?.price ?? 0;
+      let finalPrice = price;
+      if (isSeasonal) {
+         finalPrice = this.applySeasonalDiscount(price);
+      }
+
+      finalPrice = this.applyRegularDiscount(price);
+
+
+      return finalPrice;
+   }
+
+   private applyRegularDiscount(price:number):number{
+      let regularDiscountData = this.getRegularOffers();
+      let discount = regularDiscountData?.discount ?? 1;
+      let mode = regularDiscountData?.discount_mode;
+      let discountPrice:number = price;
+      if (mode == "percent") {
+         discountPrice = price - (price / discount);
+      }
+      else if (mode == "price") {
+         discountPrice = price - discount;
+      }
+      return discountPrice;
+   }
+
+   private applySeasonalDiscount(price:number):number{
+      let seasonalData = this.getSeasonalOffers();
+      let discount = seasonalData?.discount ?? 1;
+      let mode = seasonalData?.discount_mode;
+      let discountPrice:number = price;
+      if (mode == "percent") {
+         discountPrice = price - (price / discount);
+      }
+      else if (mode == "price") {
+         discountPrice = price - discount;
+      }
+      return discountPrice;
    }
 
    getCount(): number {
       return this.fruits.length;
    }
 
-   getMaxWeight(): number {
-      return 0;
+   private isSeasonal(): boolean {
+      const d = new Date();
+      let data = this.readSeasonaldata(this.months[d.getMonth()]);
+      return this.fruitCode in data;
    }
 
-   getMaxSize(): number {
-      return 0;
+   private getSeasonalOffers() {
+      switch (this.fruitCode) {
+         case "appl":
+            return null;
+         case "mang":
+            return offers.mang.seasonaloffers;
+         case "pineap":
+            return offers.pineap.seasonaloffers;
+         case "orng":
+            return offers.orng.seasonaloffers;
+         case "ban":
+            return null;
+         default:
+            return null
+      }
    }
 
-   isLocallyGrown(): boolean {
-      return false;
+   private getRegularOffers() {
+      switch (this.fruitCode) {
+         case "appl":
+            return offers.appl.regular;
+         case "mang":
+            return offers.mang.regular;
+         case "pineap":
+            return offers.pineap.regular;
+         case "orng":
+            return offers.orng.regular;
+         case "ban":
+            return offers.ban.regular;
+         default:
+            return null
+      }
    }
 
-   isSeasonal(): boolean {
-      return false;
+   private readSeasonaldata(month: string) {
+      switch (month) {
+         case "JAN":
+            return seasonalInfo["JAN"];
+         case "FEB":
+            return seasonalInfo["FEB"];
+         case "MAR":
+            return seasonalInfo["MAR"];
+         case "APR":
+            return seasonalInfo["APR"];
+         case "MAY":
+            return seasonalInfo["MAY"];
+         case "JUN":
+            return seasonalInfo["JUN"];
+         case "JUL":
+            return seasonalInfo["JUL"];
+         case "AUG":
+            return seasonalInfo["AUG"];
+         case "SEP":
+            return seasonalInfo["SEP"];
+         case "OCT":
+            return seasonalInfo["OCT"];
+         case "NOV":
+            return seasonalInfo["NOV"];
+         case "DEC":
+            return seasonalInfo["DEC"];
+         default:
+            return [];
+      }
    }
 
-   hasSeasonalOffers(): boolean {
-      return false;
+   private readFruitInfo(){
+      switch (this.fruitCode) {
+         case "appl":
+             return fruitsData["appl"];
+         case "mang":
+             return fruitsData["mang"];
+         case "pineap":
+             return fruitsData["pineap"];
+         case "orng":
+             return fruitsData["orng"];
+         case "ban":
+             return fruitsData["ban"];
+         default:
+             return null
+     }
    }
 }
