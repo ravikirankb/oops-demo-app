@@ -8,7 +8,7 @@ export class SharedDataService {
   
   public onFruitSelection: EventEmitter<string> = new EventEmitter<string>();
 
-  public onAddToCart:EventEmitter<Fruits> = new EventEmitter<Fruits>();
+  public onAddToCart:EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { 
 

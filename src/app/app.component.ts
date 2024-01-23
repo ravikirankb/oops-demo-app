@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Fruit } from './models/fruit';
+import { FruitItem } from './models/fruit-item';
 import { FruitData } from './models/fruit-data';
 
 

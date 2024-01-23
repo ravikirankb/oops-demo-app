@@ -1,6 +1,6 @@
 import { Component, HostBinding, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { share } from 'rxjs';
-import { Fruit } from '../models/fruit';
+import { FruitItem } from '../models/fruit-item';
 import { Fruits } from '../models/fruits';
 import { SharedDataService } from '../services/shared-date-service.service'
 
@@ -34,7 +34,7 @@ export class BasketComponent implements OnInit {
   }
 
   addFruitToBasket(_fruit: string) {
-    this.fruits?.addFruit(new Fruit(_fruit, 1, ""));
+    this.fruits?.addFruit(new FruitItem(_fruit, 1, ""));
     this.setFruitCount();
     this.calculateWeight();
   }
@@ -82,13 +82,17 @@ export class BasketComponent implements OnInit {
       that.fruit_class = "";
 
       if (that.fruits != undefined) {
-
-        that.sharedDataService.onAddToCart.emit(that.fruits);
+        console.log(that.fruits.fruitCode);
+        let fruitCode: string = that.fruits?.fruitCode;
+        let weight: number = 0;
+        that.fruits?.fruits.forEach(fruit => {
+              weight += fruit.weight;
+        });
+        that.sharedDataService.onAddToCart.emit({fruitcode:fruitCode,weight:weight});
         that.weight = "";
 
         that.fruits?.clear();
         that.fruits = undefined;
-
       }
     }, 1000);
   }

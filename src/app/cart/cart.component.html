@@ -6,13 +6,15 @@
     </div>
     <img src="assets/static/Images/grocery-trolley-svgrepo-com.svg"/>
 
-    <input class = "pay" type="button" value="Pay and Check Out"/>
-    <input class="cancel" type="button" value="Cancel Order"/>
+    <input class = "pay" type="button" value="Pay and Check Out" (click)="checkOutCart($event);"/>
+    <input class="cancel" type="button" value="Cancel Order" (click)="cancelOrder($event);"/>
 </div>
 
 <div class="summary">
-    <ul>
-        <li>Items in Cart</li>
-        <li>Apple - 0.1234 kg</li>
-    </ul>
+<ul>     
+    <li [style.visibility]="isEmpty ? 'hidden': 'visible'">Items in Cart</li>
+    <ng-container *ngFor = 'let fruit of fruits'> 
+        <li>{{fruit.name}} - {{fruit.weight}} kg</li>    
+    </ng-container>
+</ul>
 </div>

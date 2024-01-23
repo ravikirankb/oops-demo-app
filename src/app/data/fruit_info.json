@@ -2,26 +2,31 @@
     "orng": {
         "weight":[110,160],
         "maxavailable":250000,
-        "price":80
+        "price":80,
+        "name":"Orange"
     },
     "ban": {
         "weight":[70,90],
         "maxavailable":100000,
-        "price":55
+        "price":55,
+        "name":"Banana"
     },
     "pineap": {
         "weight":[300,600],
         "maxavailable":300000,
-        "price":120
+        "price":120,
+        "name":"Pineapple"
     },
     "mang": {
         "weight":[100,200],
         "maxavailable":200000,
-        "price": 135
+        "price": 135,
+        "name":"Mango"
     },
     "appl": {
         "weight":[90,130],
         "maxavailable":250000,
-        "price":220
+        "price":220,
+        "name":"Apple"
     }
 }

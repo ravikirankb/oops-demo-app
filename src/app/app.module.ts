@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { BasketComponent } from './basket/basket.component';
 import { FruitsComponent } from './fruits/fruits.component';
 import { CartComponent } from './cart/cart.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { CartComponent } from './cart/cart.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
