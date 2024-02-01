@@ -10,7 +10,7 @@
     <input class="cancel" type="button" value="Cancel Order" (click)="cancelOrder($event);"/>
 </div>
 
-<div class="summary">
+<div class="summary">  
 <ul>     
     <li [style.visibility]="isEmpty ? 'hidden': 'visible'">Items in Cart</li>
     <ng-container *ngFor = 'let fruit of fruits'> 

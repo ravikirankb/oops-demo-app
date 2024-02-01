@@ -1,5 +1,13 @@
 export interface iFruit{
-    weight: Number,
-    price:Number,
-    priceAfterDiscount:Number
+    fruitCode:string,
+    fruitName:string,
+    isSeasonal: boolean,
+    seasonalDiscount?: number,
+    seasonalDiscountType?: string,
+    regularDiscount?: number,
+    regularDiscountType?: string,
+    weight: number,
+    price:number,
+    amount:number,
+    priceAfterDiscount: number
 }

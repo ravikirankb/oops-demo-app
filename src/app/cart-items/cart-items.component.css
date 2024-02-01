@@ -1,0 +1,38 @@
+.invoice{
+   width: 500px;
+   height: auto;
+   border: black;
+   border-radius: 5px;
+}
+
+.title{
+    width: 100%;
+    float: left;
+}
+
+.title h1{
+    float:left;
+    bottom: 20px;
+    position: relative;
+}
+
+.title img{
+    height: 50px;
+    width: 50px;
+    float: right;
+}
+
+.invoice-info div{
+    width: 50%;
+    float: left;
+}
+
+.items-info table{
+   width: 100%;
+   border-collapse: collapse; 
+   background-color: aliceblue;
+}
+
+.items-info > table > tr{
+    border-bottom: 2pt solid black;
+}

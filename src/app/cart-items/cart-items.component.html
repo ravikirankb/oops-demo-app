@@ -1,0 +1,53 @@
+<div class="invoice">
+  <div class="title">
+    <h1>Invoice</h1>
+    <img src="assets/static/Images/grocery-trolley-svgrepo-com.svg" />
+  </div>
+  <div mat-dialog-content>
+    <div class="invoice-info">
+      <div>
+        <label> <b>Invoice Number</b></label>
+        <br />
+        <label>{{data.invoiceNumber}}</label>
+      </div>
+
+      <div>
+        <label><b>Date of Issue</b></label>
+        <br />
+        <label>{{data.invoiceDate}}</label>
+      </div>
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+    <div class="items-info">
+      <table>
+          <tr>
+            <th colspan="3" style="text-align: left;">Item</th>
+            <th>Quantity(kg)</th>
+            <th>Price/Kg</th>
+            <th>Amount</th>
+          </tr>
+          <ng-container *ngFor='let fruit of data.fruits'>
+          <tr>
+            <td colspan="3" style="text-align: left;">{{fruit.fruitName}}</td>
+            <td style="text-align: center;">{{fruit.weight}}</td>
+            <td style="text-align: center;">{{fruit.amount}}</td>
+            <td style="text-align: center;">{{fruit.price}}</td>
+          </tr>
+          </ng-container>
+      </table>
+
+      <!-- <ul>
+        <ng-container *ngFor='let fruit of data.fruits'>
+          <li>{{fruit.fruitName}} - {{fruit.weight}} kg</li>
+        </ng-container>
+      </ul> -->
+
+    </div>
+
+  </div>
+</div>

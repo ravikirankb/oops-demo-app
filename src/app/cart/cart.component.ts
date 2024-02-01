@@ -9,6 +9,7 @@ import {MatDialog,
   MatDialogContent} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import { iFruit } from '../interfaces/iFruit';
+import { CartItemsComponent } from '../cart-items/cart-items.component';
 
 @Component({
   selector: 'app-cart',
@@ -53,23 +54,37 @@ export class CartComponent implements OnInit {
   }
 
   checkOutCart(event: any) {
-      this.dialog.open(CartItemsDialogComponent, {
-        data: {
-          animal: 'panda',
-        },
-      });
-
       if(this.fruits.length >0 ){
-         this.fruits.forEach(fruit=> {
-               let isSeasonal:boolean = false;
-               let seasonalDiscount:number = 0;
-               let seasonalDiscountType:string = "";
-               let regularDiscout:number = 0;
-               let regularDiscountType:string = "";
-               let weight:number=0;
-               let price:number =0;
+         this.fruits.forEach(fr=> {
+              let fruitFound:iFruit= this.cart_fruits.find(f => f.fruitCode == fr.fruitCode)!;
+              if (fruitFound != undefined){
+                delete this.cart_fruits[this.cart_fruits.findIndex(c => c.fruitCode == fruitFound?.fruitCode)];
+                this.cart_fruits.push(fr.getFruitInfo());
+              }
+              else{
+                this.cart_fruits.push(fr.getFruitInfo());
+              }              
+         });
+         console.log(this.cart_fruits);
 
-               this.cart_fruits.push({weight:0,price:0,priceAfterDiscount:0});
+         let totalPrice:number = 0;
+         this.cart_fruits.forEach(element => {
+           totalPrice = totalPrice + element.price;
+         });
+
+         let totalDiscountPrice:number = 0;
+         this.cart_fruits.forEach(element => {
+           totalDiscountPrice = totalDiscountPrice + element.priceAfterDiscount;
+         });     
+
+         this.dialog.open(CartItemsComponent, {
+           data: {
+             fruits: this.cart_fruits,
+             totalPrice: totalPrice,
+             totalDiscountPrice: totalDiscountPrice,
+             invoiceNumber: Math.floor(1000 + Math.random() * 9000).toString(),
+             invoiceDate: new Date().toLocaleDateString()
+           },
          });
       }
       else{
