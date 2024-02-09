@@ -3,6 +3,7 @@
    height: auto;
    border: black;
    border-radius: 5px;
+   min-height: 500px;
 }
 
 .title{
@@ -27,12 +28,72 @@
     float: left;
 }
 
+.items-info{
+    min-height: 200px;
+    background-color: aliceblue;
+    border-bottom: 3px solid black;
+}
+
 .items-info table{
    width: 100%;
    border-collapse: collapse; 
    background-color: aliceblue;
 }
 
-.items-info > table > tr{
+.border-style{
     border-bottom: 2pt solid black;
+}
+
+.border-style th{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.table-padding{
+    height: 50px;
+}
+
+.table-padding td{
+    padding-top: 10px;
+}
+
+.totals{
+    float: right;
+    margin-right: 5%;
+}
+
+.totals span{
+    padding-bottom: 10px;
+}
+
+.grand-total{
+    width: auto;
+    height: 40px;
+    background-color: 	#5A5A5A;
+    float: right;
+    clear: both;
+    border-radius: 2px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    padding: 2px;
+}
+
+.grand-total b{
+    color: white;
+    align-items: center;
+}
+
+.payment{
+    float:left;
+    clear: both;
+}
+
+input[type=button]{
+    background-color: red;
+    border-radius: 3px;
+    border:white;
+    height: 30px;
+    color: white;
+    cursor: pointer;
 }

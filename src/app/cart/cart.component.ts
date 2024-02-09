@@ -3,11 +3,13 @@ import { Fruits } from '../models/fruits';
 import { Fruit } from '../models/fruit';
 import { SharedDataService } from '../services/shared-date-service.service'
 import { isEmpty } from 'rxjs';
-import {MatDialog,
+import {
+  MatDialog,
   MAT_DIALOG_DATA,
   MatDialogTitle,
-  MatDialogContent} from '@angular/material/dialog';
-import {MatButtonModule} from '@angular/material/button';
+  MatDialogContent
+} from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 import { iFruit } from '../interfaces/iFruit';
 import { CartItemsComponent } from '../cart-items/cart-items.component';
 
@@ -20,33 +22,47 @@ import { CartItemsComponent } from '../cart-items/cart-items.component';
 export class CartComponent implements OnInit {
 
   loaded: string = "";
-  fruits:Array<Fruit> = new Array<Fruit>();
-  isEmpty:boolean = this.fruits.length == 0;
+  fruits: Array<Fruit> = new Array<Fruit>();
+  isEmpty: boolean = this.fruits.length == 0;
 
   cart_fruits: Array<iFruit> = new Array<iFruit>();
 
   constructor(
     public sharedDataService: SharedDataService,
     public dialog: MatDialog
-    ) {
+  ) {
     this.sharedDataService.onAddToCart.subscribe({
       next: (addedFruit: any) => {
         console.log(addedFruit);
         console.log(`Received message`);
-        if(addedFruit){
+        if (addedFruit) {
           let code = addedFruit.fruitcode;
-          if(this.fruits.find(c => c.fruitCode == code) == undefined){
+          if (this.fruits.find(c => c.fruitCode == code) == undefined) {
             this.fruits.push(new Fruit(addedFruit.fruitcode, addedFruit.weight));
           }
-          else{
-            let fruit:any = this.fruits.find(c => c.fruitCode == code);
+          else {
+            let fruit: any = this.fruits.find(c => c.fruitCode == code);
             fruit?.increaseWeight(addedFruit.weight);
           }
           this.isEmpty = false;
-          this.loaded ="loaded";
+          this.loaded = "loaded";
         }
       }
-    })
+    });
+
+    this.sharedDataService.onPaymentComplete.subscribe({
+      next:()=>{
+        this.dialog.closeAll();
+        this.fruits.splice(0,this.fruits.length);
+        this.isEmpty= true;
+        this.loaded="";
+      }
+    });
+
+    this.dialog.afterAllClosed.subscribe(() => {
+      // remove all fruits from cart when dialog close.
+      this.cart_fruits.splice(0, this.cart_fruits.length);      
+    });
   }
 
   ngOnInit(): void {
@@ -54,46 +70,42 @@ export class CartComponent implements OnInit {
   }
 
   checkOutCart(event: any) {
-      if(this.fruits.length >0 ){
-         this.fruits.forEach(fr=> {
-              let fruitFound:iFruit= this.cart_fruits.find(f => f.fruitCode == fr.fruitCode)!;
-              if (fruitFound != undefined){
-                delete this.cart_fruits[this.cart_fruits.findIndex(c => c.fruitCode == fruitFound?.fruitCode)];
-                this.cart_fruits.push(fr.getFruitInfo());
-              }
-              else{
-                this.cart_fruits.push(fr.getFruitInfo());
-              }              
-         });
-         console.log(this.cart_fruits);
+    if (this.fruits.length > 0) {
+      this.fruits.forEach(fr => {
+        this.cart_fruits.push(fr.getFruitInfo());
+      });
+      console.log(this.cart_fruits);
 
-         let totalPrice:number = 0;
-         this.cart_fruits.forEach(element => {
-           totalPrice = totalPrice + element.price;
-         });
+      let totalPrice: number = 0;
+      this.cart_fruits.forEach(element => {
+        totalPrice = totalPrice + element.price;
+      });
 
-         let totalDiscountPrice:number = 0;
-         this.cart_fruits.forEach(element => {
-           totalDiscountPrice = totalDiscountPrice + element.priceAfterDiscount;
-         });     
+      let totalDiscountPrice: number = 0;
+      this.cart_fruits.forEach(element => {
+        totalDiscountPrice = totalDiscountPrice + element.priceAfterDiscount;
+      });
 
-         this.dialog.open(CartItemsComponent, {
-           data: {
-             fruits: this.cart_fruits,
-             totalPrice: totalPrice,
-             totalDiscountPrice: totalDiscountPrice,
-             invoiceNumber: Math.floor(1000 + Math.random() * 9000).toString(),
-             invoiceDate: new Date().toLocaleDateString()
-           },
-         });
-      }
-      else{
-        alert("No fruits added to cart!")
-      }
+      this.dialog.open(CartItemsComponent, {
+        data: {
+          fruits: this.cart_fruits,
+          totalPrice: Math.round((totalPrice + Number.EPSILON) * 100) / 100,
+          totalDiscountPrice: Math.round((totalPrice - totalDiscountPrice + Number.EPSILON) * 100) / 100,
+          netPrice: Math.round((totalDiscountPrice + Number.EPSILON) * 100) / 100,
+          invoiceNumber: Math.floor(1000 + Math.random() * 9000).toString(),
+          invoiceDate: new Date().toLocaleDateString()
+        },
+      });
+    }
+    else {
+      alert("No fruits added to cart!")
+    }
   }
 
   cancelOrder(event: any) {
-     
+    this.fruits.splice(0,this.fruits.length);
+    this.isEmpty= true;
+    this.loaded="";
   }
 }
 
@@ -103,5 +115,5 @@ export class CartComponent implements OnInit {
   standalone: true
 })
 export class CartItemsDialogComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
 }

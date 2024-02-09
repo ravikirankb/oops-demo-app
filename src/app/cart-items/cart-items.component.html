@@ -25,29 +25,46 @@
 
     <div class="items-info">
       <table>
-          <tr>
+          <tr class="border-style">
             <th colspan="3" style="text-align: left;">Item</th>
             <th>Quantity(kg)</th>
             <th>Price/Kg</th>
+            <th>Discount</th>
             <th>Amount</th>
           </tr>
           <ng-container *ngFor='let fruit of data.fruits'>
-          <tr>
+          <tr class="table-padding">
             <td colspan="3" style="text-align: left;">{{fruit.fruitName}}</td>
             <td style="text-align: center;">{{fruit.weight}}</td>
             <td style="text-align: center;">{{fruit.amount}}</td>
-            <td style="text-align: center;">{{fruit.price}}</td>
+            <td style="text-align: center;">
+              <div *ngIf="fruit.isSeasonal && fruit.seasonalDiscount > 0">
+                   Seasonal: {{fruit.seasonalDiscount}}  {{fruit.seasonalDiscountType == "percent"?"%":"&#8377;"}}
+              </div>
+                   Regular: {{fruit.regularDiscount}} {{fruit.regularDiscountType == "percent"?"%":"&#8377;"}}
+            </td>
+            <td style="text-align: center;">
+              {{fruit.price}} 
+            </td>
           </tr>
           </ng-container>
       </table>
-
-      <!-- <ul>
-        <ng-container *ngFor='let fruit of data.fruits'>
-          <li>{{fruit.fruitName}} - {{fruit.weight}} kg</li>
-        </ng-container>
-      </ul> -->
-
     </div>
 
+    <div class="totals">
+        <span>SubTotal : {{data.totalPrice}} 	&#8377;</span>
+        <br>
+        <span>Discount : {{data.totalDiscountPrice}} 	&#8377;</span>
+        <br>
+       <span>Net Price: {{data.netPrice}} 	&#8377;</span> 
+    </div>
+
+    <div class="grand-total">
+      <b> Grand Total:  {{data.netPrice| currency: 'INR' : 'symbol-narrow' : '4.2-2'}} </b>
+    </div>
+
+    <div class="payment">
+      <input class = "pay" type="button" value="Continue to Pay" (click)="completepay($event);"/>
+    </div>
   </div>
 </div>

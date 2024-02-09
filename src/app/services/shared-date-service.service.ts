@@ -10,6 +10,8 @@ export class SharedDataService {
 
   public onAddToCart:EventEmitter<any> = new EventEmitter<any>();
 
+  public onPaymentComplete:EventEmitter<string> = new EventEmitter<string>();
+
   constructor() { 
 
   }

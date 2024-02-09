@@ -54,6 +54,10 @@
         "regular":{
             "discount_mode":"price",
             "discount":5
+        },
+        "seasonaloffers": {
+            "discount_mode": "percent",
+            "discount": 2
         }
     }
 }

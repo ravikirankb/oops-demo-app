@@ -27,8 +27,8 @@ export class Fruit {
       let regularDiscout: number = 0;
       let regularDiscountType: string = "";
       let weight: number = this.weight;
-      let price: number = this.__getPrice() * weight;
-      let amount: number = this.__getPrice();
+      let price: number = Math.round((this.__getPrice() * weight + Number.EPSILON) * 100) / 100; 
+      let amount: number = Math.round((this.__getPrice() + Number.EPSILON) * 100) / 100; 
       let priceAfterDiscount: number = 0;
 
       if (isSeasonal) {
@@ -75,7 +75,8 @@ export class Fruit {
             discountPrice = price - discount;
          }
       }
-      return discountPrice;
+      
+      return Math.round((discountPrice + Number.EPSILON) * 100) / 100;;
    }
 
    private applySeasonalDiscount(price: number, discount: number, type: string): number {
@@ -88,19 +89,20 @@ export class Fruit {
             discountPrice = price - discount;
          }
       }
-      return discountPrice;
+
+      return Math.round((discountPrice + Number.EPSILON) * 100) / 100;
    }
 
    private __isSeasonal(): boolean {
       const d = new Date();
       let data = this.readSeasonaldata(this.months[d.getMonth()]);
-      return this.fruitCode in data;
+      return data.indexOf(this.fruitCode) > -1;
    }
 
    private getSeasonalOffers() {
       switch (this.fruitCode) {
          case "appl":
-            return null;
+            return offers.appl.seasonaloffers;
          case "mang":
             return offers.mang.seasonaloffers;
          case "pineap":
