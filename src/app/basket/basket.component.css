@@ -70,7 +70,7 @@
 }
 
 .appl{
-    background-image: url("/assets/static/Images/apple-svgrepo-com.svg"); 
+    background-image: url("../../assets/static/Images/apple-svgrepo-com.svg"); 
 }
 
 .appl::before{
@@ -80,7 +80,7 @@
 }
 
 .ban{
-    background-image: url("/assets/static/Images/banana-svgrepo-com.svg"); 
+    background-image: url("../../assets/static/Images/banana-svgrepo-com.svg"); 
 }
 
 .ban::before{
@@ -90,7 +90,7 @@
 }
 
 .mang{
-    background-image: url("/assets/static/Images/mango-svgrepo-com.svg"); 
+    background-image: url("../../assets/static/Images/mango-svgrepo-com.svg"); 
 }
 
 .mang::before{
@@ -100,7 +100,7 @@
 }
 
 .orng{
-    background-image: url("/assets/static/Images/orange-svgrepo-com.svg"); 
+    background-image: url("../../assets/static/Images/orange-svgrepo-com.svg"); 
 }
 
 .orng::before{
@@ -110,7 +110,7 @@
 }
 
 .pineap{
-    background-image: url("/assets/static/Images/pineapple-svgrepo-com.svg"); 
+    background-image: url("../../assets/static/Images/pineapple-svgrepo-com.svg"); 
 }
 
 .pineap::before{

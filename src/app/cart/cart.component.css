@@ -16,7 +16,7 @@
    height: 100px;
    width: 100px;
    position: absolute;
-   background-image: url("/assets/static/Images/shopping-bag-svgrepo-com.svg");
+   background-image: url("../../assets/static/Images/shopping-bag-svgrepo-com.svg");
 }
 
 input[type=button]{
