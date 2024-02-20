@@ -26,14 +26,15 @@ input[type=button]{
     height: 30px;
     color: white;
     cursor: pointer;
+    position: relative;
 }
 
 .pay{
-    margin-left: 10px;
+    left: 20px;
 }
 
 .cancel{
-    margin-left: 5px;
+   left : 25px;
 }
 
 
